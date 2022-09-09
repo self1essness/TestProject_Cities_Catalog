@@ -4,14 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Configuration;
+
 
 namespace TestProject_Cities_Catalog
 {
     class DB
     {
-        //MySqlConnection connection = new MySqlConnection("server=localhost;port=3306;username=root;password=root;database=bd_city");
-        //MySqlConnection connection = new MySqlConnection("server=sql8.freesqldatabase.com;port=3306;username=sql8517259;password=MJSdrtSVT2;database=sql8517259");
-        MySqlConnection connection = new MySqlConnection("server=db4free.net;port=3306;username=db_self1essness;password=Bee424274;database=self1essness");
+        static string connectionStringRemote = ConfigurationManager.ConnectionStrings["remoteDataBase"].ConnectionString;
+        //static string connectionStringLocal = ConfigurationManager.ConnectionStrings["localDataBase"].ConnectionString;
+        MySqlConnection connection = new MySqlConnection(connectionStringRemote);
 
         public void openConnection()
         {

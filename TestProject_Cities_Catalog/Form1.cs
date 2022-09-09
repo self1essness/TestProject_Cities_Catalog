@@ -91,6 +91,8 @@ namespace TestProject_Cities_Catalog
         private void onOpen()
         {
             DistrictListBox.Items.Clear();
+            RegionListBox.Items.Clear();
+            CityListBox.Items.Clear();
 
             DB db = new DB();
 
@@ -118,6 +120,7 @@ namespace TestProject_Cities_Catalog
                 return;
 
             RegionListBox.Items.Clear();
+
             string selectedDistrict = DistrictListBox.SelectedItem.ToString();
 
             DB db = new DB();
