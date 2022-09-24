@@ -1,6 +1,6 @@
 ﻿namespace TestProject_Cities_Catalog
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -230,7 +230,7 @@
             this.panel1.Size = new System.Drawing.Size(682, 453);
             this.panel1.TabIndex = 15;
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -241,7 +241,7 @@
             this.Controls.Add(this.DistrictLabel);
             this.Controls.Add(this.DistrictListBox);
             this.Controls.Add(this.panel1);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Справочник городов";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

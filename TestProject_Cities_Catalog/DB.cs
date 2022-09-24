@@ -11,9 +11,9 @@ namespace TestProject_Cities_Catalog
 {
     class DB
     {
-        static string connectionStringRemote = ConfigurationManager.ConnectionStrings["remoteDataBase"].ConnectionString;
-        //static string connectionStringLocal = ConfigurationManager.ConnectionStrings["localDataBase"].ConnectionString;
-        MySqlConnection connection = new MySqlConnection(connectionStringRemote);
+        private static string ConnectionStringRemote = ConfigurationManager.ConnectionStrings["remoteDataBase"].ConnectionString;
+        //private static string ConnectionStringLocal = ConfigurationManager.ConnectionStrings["localDataBase"].ConnectionString;
+        MySqlConnection connection = new MySqlConnection(ConnectionStringRemote);
 
         public void openConnection()
         {

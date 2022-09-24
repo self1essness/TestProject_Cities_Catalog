@@ -12,9 +12,9 @@ using System.Xml;
 
 namespace TestProject_Cities_Catalog
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             #region Design of TextBoxes
@@ -29,66 +29,43 @@ namespace TestProject_Cities_Catalog
             CityTextBox.Text = "Введите город";
             #endregion
 
-            onOpen();
+            OnOpen();
         }
 
         #region Design of TextBoxes
 
         private void DictrictTextBox_Enter(object sender, EventArgs e)
         {
-            if (DictrictTextBox.Text == "Введите округ")
-            {
-                DictrictTextBox.ForeColor = Color.Black;
-                DictrictTextBox.Text = "";
-            }
-
+            TextBoxDesign(DictrictTextBox, "", Color.Black);
         }
         private void DictrictTextBox_Leave(object sender, EventArgs e)
         {
-            if (DictrictTextBox.Text == "")
-            {
-                DictrictTextBox.ForeColor = Color.Gray;
-                DictrictTextBox.Text = "Введите округ";
-            }
+            TextBoxDesign(DictrictTextBox, "Введите округ", Color.Gray);
         }
-
         private void RegionTextBox_Enter(object sender, EventArgs e)
         {
-            if (RegionTextBox.Text == "Введите регион")
-            {
-                RegionTextBox.ForeColor = Color.Black;
-                RegionTextBox.Text = "";
-            }
+            TextBoxDesign(RegionTextBox, "", Color.Black);
         }
         private void RegionTextBox_Leave(object sender, EventArgs e)
         {
-            if (RegionTextBox.Text == "")
-            {
-                RegionTextBox.ForeColor = Color.Gray;
-                RegionTextBox.Text = "Введите регион";
-            }
+            TextBoxDesign(RegionTextBox, "Введите регион", Color.Gray);
         }
-
         private void CityTextBox_Enter(object sender, EventArgs e)
         {
-            if (CityTextBox.Text == "Введите город")
-            {
-                CityTextBox.ForeColor = Color.Black;
-                CityTextBox.Text = "";
-            }
+            TextBoxDesign(CityTextBox, "", Color.Black);
         }
         private void CityTextBox_Leave(object sender, EventArgs e)
         {
-            if (CityTextBox.Text == "")
-            {
-                CityTextBox.ForeColor = Color.Gray;
-                CityTextBox.Text = "Введите город";
-            }
+            TextBoxDesign(CityTextBox, "Введите город", Color.Gray);
+        }
+        private void TextBoxDesign(TextBox boxName, string boxText, Color textBoxForeColor)
+        {
+            boxName.Text = boxText;
+            boxName.ForeColor = textBoxForeColor;
         }
         #endregion
 
-
-        private void onOpen()
+        private void OnOpen()
         {
             DistrictListBox.Items.Clear();
             RegionListBox.Items.Clear();
@@ -235,7 +212,7 @@ namespace TestProject_Cities_Catalog
 
             if(command.ExecuteNonQuery() == 1)
             {
-                onOpen();
+                OnOpen();
                 MessageBox.Show($"Округ добавлен");
             }
             else
@@ -287,7 +264,7 @@ namespace TestProject_Cities_Catalog
 
             if (command.ExecuteNonQuery() == 1)
             {
-                onOpen();
+                OnOpen();
 
                 MessageBox.Show($"Округ под названием {deleteDistrict} удалён. \n Удалено {numberOfRemovedCities} городов и {numberOfRemovedRegions} регионов относящихся к этому региону.");
             }
@@ -308,10 +285,7 @@ namespace TestProject_Cities_Catalog
             adapter.SelectCommand = command;
             adapter.Fill(table);
 
-            if (table.Rows.Count > 0)
-                return true;
-            else
-                return false;
+            return table.Rows.Count > 0;
         }
 
 
@@ -351,7 +325,7 @@ namespace TestProject_Cities_Catalog
 
             if (command.ExecuteNonQuery() == 1)
             {
-                onOpen();
+                OnOpen();
                 MessageBox.Show($"Регион добавлен");
             }
             else
@@ -395,7 +369,7 @@ namespace TestProject_Cities_Catalog
 
             if (command.ExecuteNonQuery() == 1)
             {
-                onOpen();
+                OnOpen();
                 MessageBox.Show($"Регион под названием {deleteRegion} был удалён. \nУдалено {numberOfRemovedCities} городов, относящихся к этому региону.");
             }
 
@@ -414,10 +388,7 @@ namespace TestProject_Cities_Catalog
             adapter.SelectCommand = command;
             adapter.Fill(table);
 
-            if (table.Rows.Count > 0)
-                return true;
-            else
-                return false;
+            return table.Rows.Count > 0;
         }
 
         private void AddCity_Click(object sender, EventArgs e)
@@ -457,7 +428,7 @@ namespace TestProject_Cities_Catalog
 
             if (command.ExecuteNonQuery() == 1)
             {
-                onOpen();
+                OnOpen();
                 MessageBox.Show($"Город добален");
             }
             else
@@ -496,7 +467,7 @@ namespace TestProject_Cities_Catalog
 
             if (command.ExecuteNonQuery() == 1)
             {
-                onOpen();
+                OnOpen();
                 MessageBox.Show($"Город удалён!", "Сообщение");
             }
 
@@ -516,10 +487,7 @@ namespace TestProject_Cities_Catalog
             adapter.SelectCommand = command;
             adapter.Fill(table);
 
-            if (table.Rows.Count > 0)
-                return true;
-            else
-                return false;
+            return table.Rows.Count > 0;
         }
     }
 }
